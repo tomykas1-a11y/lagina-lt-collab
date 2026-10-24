@@ -1,0 +1,63 @@
+/* ==========================================================================
+   LAGINA.LT - MOBILE HOMEPAGE LAUNCH PATCH (ISSUE #2)
+   Candidate supplied by Gemini, preserved for review.
+   NOT YET VISUALLY VERIFIED ON STAGING OR DEPLOYED.
+   Strictly scoped to mobile (<768px) and the homepage (.home)
+   ========================================================================== */
+
+@media (max-width: 767px) {
+    /* 1. GPU HERO: Reduce unnecessary height and padding */
+    .home .hp-page__header {
+        padding-top: 24px !important;
+        padding-bottom: 32px !important;
+        min-height: auto !important;
+    }
+
+    /* 2. SEARCH FORM: Compact layout & Fix the 135px flex-basis bug */
+    .home .hp-form--listing-search {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+
+    /* Target the dropdown wrappers to override the faulty flex-basis */
+    .home .hp-form--listing-search > * {
+        flex-basis: auto !important;
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
+    .home .hp-form--listing-search input[name="s"],
+    .home .hp-form--listing-search button[type="submit"] {
+        width: 100% !important;
+        min-height: 48px !important;
+        margin: 0 !important;
+    }
+
+    /* 3. CATEGORY NAV: Ensure smooth horizontal scrolling */
+    .home #lg-categories {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 8px !important;
+    }
+    .home #lg-categories::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* 4a. PRODUCT GRID: Override forced 3 columns -> Set to 2 columns */
+    .home #lagina-three-products {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+    }
+}
+
+/* 4b. PRODUCT GRID: Ultra-narrow fix (1 column) */
+@media (max-width: 359px) {
+    .home #lagina-three-products {
+        grid-template-columns: 1fr !important;
+    }
+}
